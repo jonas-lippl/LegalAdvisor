@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import { Node } from './logic/Node'
 
-function App() {
+const App = () => {
+  const nextNodeA = new Node("Question A", { "Lol": new Node("", {}) });
+  const nextNodeB = new Node("Question B", { "Not lol": new Node("", {})});
+
+  const options = {
+    "Yes": nextNodeA,
+    "No": nextNodeB
+  };
+  const defaultNode = new Node("Question", options);
+
+  const [currentNode, setCurrentNode] = useState(defaultNode)
+
+  const buttons = Object.keys(currentNode.options).map(key => <button onClick={() => setCurrentNode(currentNode.options[key])}>{key}</button>)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>{currentNode.question}</h1>
+      {buttons}
+    </>
   );
 }
 
