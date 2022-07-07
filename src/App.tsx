@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
 import './App.css';
 import { Node } from './logic/Node'
+import {Option} from "./Option";
 
 const App = () => {
-  const nextNodeA = new Node("Question A", { "Lol": new Node("", {}) });
+  const nextNodeA = new Node("Question A", { "date": new Node("", {}) });
   const nextNodeB = new Node("Question B", { "Not lol": new Node("", {})});
 
-  const options = {
+  const answerOptions = {
     "Yes": nextNodeA,
     "No": nextNodeB
   };
-  const defaultNode = new Node("Question", options);
+  const defaultNode = new Node("Question", answerOptions);
 
   const [currentNode, setCurrentNode] = useState(defaultNode)
 
-  const buttons = Object.keys(currentNode.options).map(key => <button onClick={() => setCurrentNode(currentNode.options[key])}>{key}</button>)
+  const options = Object.keys(currentNode.options).map(key =>
+      <Option onClick={() => setCurrentNode(currentNode.options[key])} text={key}/>)
 
   return (
     <>
       <h1>{currentNode.question}</h1>
-      {buttons}
+      {options}
     </>
   );
 }
