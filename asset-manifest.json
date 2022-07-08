@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/jonas31415/LegalAdviser/static/css/main.6abc9fcb.css",
+    "main.js": "/jonas31415/LegalAdviser/static/js/main.cc03b9bd.js",
+    "index.html": "/jonas31415/LegalAdviser/index.html",
+    "main.6abc9fcb.css.map": "/jonas31415/LegalAdviser/static/css/main.6abc9fcb.css.map",
+    "main.cc03b9bd.js.map": "/jonas31415/LegalAdviser/static/js/main.cc03b9bd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6abc9fcb.css",
+    "static/js/main.cc03b9bd.js"
+  ]
+}
