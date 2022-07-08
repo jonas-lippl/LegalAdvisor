@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { downloadStructure } from './api/structure';
 
+import { data } from './data';
 import styles from './App.module.css';
 import { Node } from './logic/Node';
 import { DateOption } from './Option';
 
 const App = () => {
-  const [currentNode, setCurrentNode] = useState(new Node('', {}));
+  const [currentNode, setCurrentNode] = useState(data);
 
-  useEffect(() => {
-    fetchStructure();
-  }, []);
+  // useEffect(() => {
+  //   fetchStructure();
+  // }, []);
 
   const fetchStructure = () => {
     downloadStructure().then((structure) => setCurrentNode(structure));
@@ -44,7 +45,10 @@ const App = () => {
 
   return (
     <div>
-      <h1 onClick={() => fetchStructure()}>LegalAdvisor</h1>
+      <div className={styles.header}>
+        <h1 onClick={() => setCurrentNode(data)}>LegalAdvisor</h1>
+        <div className={styles.logo} />
+      </div>
 
       <div className={styles.content}>
         <p className={styles.question}>{currentNode.question}</p>

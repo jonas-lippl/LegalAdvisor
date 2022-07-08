@@ -7,10 +7,32 @@ body {
   background-color: #f9f9f9;
 }
 
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  background-image: url('../public/scale-transparent.png');
+  width: 60px;
+  height: 60px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 20px;
+}
+
 .question {
   text-align: center;
   font-size: 25px;
-  margin-top: 100px;
+  margin-top: 10vh;
+  max-height: 40vh;
+  overflow-y: scroll;
+  max-width: 90vw;
+  word-wrap: break-word;
+  hyphens: auto;
+  color: rgb(77, 77, 77);
 }
 
 .options {
@@ -27,6 +49,7 @@ body {
 }
 
 .options button {
+  color: black;
   width: 110px !important;
   height: 60px;
   flex-grow: 0;
@@ -34,6 +57,6 @@ body {
   outline: none;
   background-color: transparent;
   border-radius: 7px;
-  border: 1.5px solid #1976d2;
+  border: 1.5px solid black;
   font-size: 20px;
 }
