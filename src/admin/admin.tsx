@@ -1,3 +1,9 @@
+import styles from './Admin.module.css';
+
 export const Admin = () => {
-  return <h1>Admin!</h1>;
+  return (
+    <div className={styles.container}>
+      <h1>Text</h1>
+    </div>
+  );
 };
