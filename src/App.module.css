@@ -1,0 +1,39 @@
+h1 {
+  color: #1976d2;
+}
+
+body {
+  padding: 10px 20px;
+  background-color: #f9f9f9;
+}
+
+.question {
+  text-align: center;
+  font-size: 25px;
+  margin-top: 100px;
+}
+
+.options {
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.options button {
+  width: 110px !important;
+  height: 60px;
+  flex-grow: 0;
+  margin-bottom: 10px !important;
+  outline: none;
+  background-color: transparent;
+  border-radius: 7px;
+  border: 1.5px solid #1976d2;
+  font-size: 20px;
+}

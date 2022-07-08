@@ -21,7 +21,6 @@ export const SpecifyInputButton: React.FC<SpecifyInputButtonProps> = (
 export const Admin = () => {
   const [buttonEdit, setButtonEdit] = useState<boolean | undefined>(undefined);
   const [numberOfButtons, setNumberOfButtons] = useState<number>(1);
-  let decisionTree;
   let conditionalRender;
   if (buttonEdit === undefined) {
     conditionalRender = [

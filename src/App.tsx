@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { downloadStructure } from './api/structure';
+
+import styles from './App.module.css';
 import { Node } from './logic/Node';
-import { ButtonOption, DateOption } from './Option';
-import { Stack } from '@mui/material';
+import { DateOption } from './Option';
 
 const App = () => {
-  // Test Data----------------------------------------------
+  useEffect(() => {
+    downloadStructure();
+  }, []);
 
+  // Test Data----------------------------------------------
   const nextNodeA = new Node('Question A', {
     '>21': new Node('Question C', {}),
     '<21': new Node('Question D', {}),
@@ -15,16 +19,18 @@ const App = () => {
 
   const answerOptionsForDefault = {
     No: nextNodeA,
-    Check: new Node('', {}),
-    Check2: new Node('', {}),
-    Check3: new Node('', {}),
     Yes: nextNodeB,
   };
-  const defaultNode = new Node('Question', answerOptionsForDefault);
+  const defaultNode = new Node(
+    'Did you kill your employees?',
+    answerOptionsForDefault,
+  );
   // Test Data----------------------------------------------
   const [currentNode, setCurrentNode] = useState(defaultNode);
+  const optionKeys = Object.keys(currentNode.options);
+
   let options;
-  if (Object.keys(currentNode.options).includes('>21')) {
+  if (optionKeys.some((text) => text.includes('>') || text.includes('<'))) {
     options = (
       <DateOption
         setCurrentNode={setCurrentNode}
@@ -32,29 +38,20 @@ const App = () => {
       />
     );
   } else {
-    options = (
-      <Stack
-        direction="row"
-        spacing={2}
-        sx={{ width: '100%' }}
-        className={'buttonStack'}
-      >
-        {Object.keys(currentNode.options).map((key) => (
-          <ButtonOption
-            onClick={() => setCurrentNode(currentNode.options[key])}
-            text={key}
-          />
-        ))}
-      </Stack>
-    );
+    options = Object.keys(currentNode.options).map((key) => (
+      <button onClick={() => setCurrentNode(currentNode.options[key])}>
+        {key}
+      </button>
+    ));
   }
 
   return (
-    <div className={'body'}>
-      <h1>LegalAdvisor</h1>
-      <div className="content">
-        <p>{currentNode.question}</p>
-        <div>{options}</div>
+    <div>
+      <h1 onClick={() => setCurrentNode(defaultNode)}>LegalAdvisor</h1>
+
+      <div className={styles.content}>
+        <p className={styles.question}>{currentNode.question}</p>
+        <div className={styles.options}>{options}</div>
       </div>
     </div>
   );
