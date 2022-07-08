@@ -4,30 +4,18 @@ import { downloadStructure } from './api/structure';
 import styles from './App.module.css';
 import { Node } from './logic/Node';
 import { DateOption } from './Option';
-import { data } from './data';
 
 const App = () => {
+  const [currentNode, setCurrentNode] = useState(new Node('', {}));
+
   useEffect(() => {
-    downloadStructure();
+    fetchStructure();
   }, []);
 
-  // Test Data----------------------------------------------
-  const nextNodeA = new Node('Question A', {
-    '>21': new Node('Question C', {}),
-    '<21': new Node('Question D', {}),
-  });
-  const nextNodeB = new Node('Question B', { 'Not lol': new Node('', {}) });
-
-  const answerOptionsForDefault = {
-    No: nextNodeA,
-    Check: new Node('Arbeitsort', {}),
-    Check2: new Node('', {}),
-    Check3: new Node('', {}),
-    Yes: nextNodeB,
+  const fetchStructure = () => {
+    downloadStructure().then((structure) => setCurrentNode(structure));
   };
-  const defaultNode = data;
-  // Test Data----------------------------------------------
-  const [currentNode, setCurrentNode] = useState(defaultNode);
+
   const optionKeys = Object.keys(currentNode.options);
 
   let options;
@@ -39,7 +27,13 @@ const App = () => {
       />
     );
   } else if (currentNode.question.includes('Arbeitsort')) {
-    options = <input type="text" name="Arbeitsort" />;
+    options = (
+      <input
+        type="text"
+        name="Arbeitsort"
+        onSubmit={() => setCurrentNode(currentNode.options['Next'])}
+      />
+    );
   } else if (optionKeys.length) {
     options = optionKeys.map((key) => (
       <button onClick={() => setCurrentNode(currentNode.options[key])}>
@@ -50,7 +44,7 @@ const App = () => {
 
   return (
     <div>
-      <h1 onClick={() => setCurrentNode(defaultNode)}>LegalAdvisor</h1>
+      <h1 onClick={() => fetchStructure()}>LegalAdvisor</h1>
 
       <div className={styles.content}>
         <p className={styles.question}>{currentNode.question}</p>
