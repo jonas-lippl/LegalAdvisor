@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import { Node } from './logic/Node';
 import { ButtonOption, DateOption } from './Option';
-import { Fab, Stack } from '@mui/material';
+import { Stack } from '@mui/material';
 
 const App = () => {
   // Test Data----------------------------------------------
@@ -15,6 +15,9 @@ const App = () => {
 
   const answerOptionsForDefault = {
     No: nextNodeA,
+    Check: new Node('', {}),
+    Check2: new Node('', {}),
+    Check3: new Node('', {}),
     Yes: nextNodeB,
   };
   const defaultNode = new Node('Question', answerOptionsForDefault);
@@ -30,7 +33,12 @@ const App = () => {
     );
   } else {
     options = (
-      <Stack direction="row" spacing={2} sx={{ width: '100%' }}>
+      <Stack
+        direction="row"
+        spacing={2}
+        sx={{ width: '100%' }}
+        className={'buttonStack'}
+      >
         {Object.keys(currentNode.options).map((key) => (
           <ButtonOption
             onClick={() => setCurrentNode(currentNode.options[key])}
@@ -46,7 +54,7 @@ const App = () => {
       <h1>LegalAdvisor</h1>
       <div className="content">
         <p>{currentNode.question}</p>
-        <div className={'options'}>{options}</div>
+        <div>{options}</div>
       </div>
     </div>
   );

@@ -8,8 +8,14 @@ body{
     background-color: #F9F9F9
 }
 
-.options{
+.buttonStack{
     display: flex;
-    width: 100%;
+    max-width: 100%;
     justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.buttonStack > button{
+    flex-grow: 0;
+    max-width: 30%
 }
