@@ -4,6 +4,7 @@ import { downloadStructure } from './api/structure';
 import styles from './App.module.css';
 import { Node } from './logic/Node';
 import { DateOption } from './Option';
+import { data } from './data';
 
 const App = () => {
   useEffect(() => {
@@ -19,12 +20,12 @@ const App = () => {
 
   const answerOptionsForDefault = {
     No: nextNodeA,
+    Check: new Node('Arbeitsort', {}),
+    Check2: new Node('', {}),
+    Check3: new Node('', {}),
     Yes: nextNodeB,
   };
-  const defaultNode = new Node(
-    'Did you kill your employees?',
-    answerOptionsForDefault,
-  );
+  const defaultNode = data;
   // Test Data----------------------------------------------
   const [currentNode, setCurrentNode] = useState(defaultNode);
   const optionKeys = Object.keys(currentNode.options);
@@ -37,8 +38,10 @@ const App = () => {
         options={currentNode.options}
       />
     );
-  } else {
-    options = Object.keys(currentNode.options).map((key) => (
+  } else if (currentNode.question.includes('Arbeitsort')) {
+    options = <input type="text" name="Arbeitsort" />;
+  } else if (optionKeys.length) {
+    options = optionKeys.map((key) => (
       <button onClick={() => setCurrentNode(currentNode.options[key])}>
         {key}
       </button>
@@ -51,7 +54,7 @@ const App = () => {
 
       <div className={styles.content}>
         <p className={styles.question}>{currentNode.question}</p>
-        <div className={styles.options}>{options}</div>
+        {options ? <div className={styles.options}>{options}</div> : null}
       </div>
     </div>
   );
