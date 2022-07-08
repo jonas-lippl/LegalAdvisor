@@ -3,28 +3,43 @@ import './App.css';
 import { Node } from './logic/Node';
 import EditIcon from '@mui/icons-material/Edit';
 import CloseIcon from '@mui/icons-material/Close';
-import { Option } from './Option';
+import { ButtonOption, DateOption } from './Option';
 import { Fab } from '@mui/material';
 
 const App = () => {
   const [adminMode, setAdminMode] = useState<boolean>(false);
-  const nextNodeA = new Node('Question A', { date: new Node('', {}) });
+
+  // Test Data----------------------------------------------
+
+  const nextNodeA = new Node('Question A', {
+    '>21': new Node('QC', {}),
+    '<21': new Node('QD', {}),
+  });
   const nextNodeB = new Node('Question B', { 'Not lol': new Node('', {}) });
 
-  const answerOptions = {
+  const answerOptionsForDefault = {
     Yes: nextNodeA,
     No: nextNodeB,
   };
-  const defaultNode = new Node('Question', answerOptions);
-
+  const defaultNode = new Node('Question', answerOptionsForDefault);
+  // Test Data----------------------------------------------
   const [currentNode, setCurrentNode] = useState(defaultNode);
-
-  const options = Object.keys(currentNode.options).map((key) => (
-    <Option
-      onClick={() => setCurrentNode(currentNode.options[key])}
-      text={key}
-    />
-  ));
+  let options;
+  if (Object.keys(currentNode.options).includes('>21')) {
+    options = (
+      <DateOption
+        setCurrentNode={() => setCurrentNode}
+        options={currentNode.options}
+      />
+    );
+  } else {
+    options = Object.keys(currentNode.options).map((key) => (
+      <ButtonOption
+        onClick={() => setCurrentNode(currentNode.options[key])}
+        text={key}
+      />
+    ));
+  }
 
   if (adminMode) {
     return (

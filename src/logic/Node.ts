@@ -1,9 +1,5 @@
-interface INodeEvalFunc {
-  (): Node
-}
-
-interface IOptions {
-  [text: string]: Node | INodeEvalFunc
+export interface IOptions {
+  [text: string]: Node;
 }
 
 export class Node {
