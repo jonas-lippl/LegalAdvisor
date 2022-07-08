@@ -12,8 +12,8 @@ const App = () => {
   // Test Data----------------------------------------------
 
   const nextNodeA = new Node('Question A', {
-    '>21': new Node('QC', {}),
-    '<21': new Node('QD', {}),
+    '>21': new Node('Question C', {}),
+    '<21': new Node('Question D', {}),
   });
   const nextNodeB = new Node('Question B', { 'Not lol': new Node('', {}) });
 
@@ -28,7 +28,7 @@ const App = () => {
   if (Object.keys(currentNode.options).includes('>21')) {
     options = (
       <DateOption
-        setCurrentNode={() => setCurrentNode}
+        setCurrentNode={setCurrentNode}
         options={currentNode.options}
       />
     );

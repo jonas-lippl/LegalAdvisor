@@ -35,6 +35,7 @@ export const DateOption: React.FC<DateOptionProps> = (props) => {
           const now = new Date();
           const diff = Math.abs(now.getTime() - newValue!.getTime());
           const diffDays = Math.ceil(diff / (1000 * 3600 * 24));
+          console.log(diffDays);
           if (diffDays > 21) {
             props.setCurrentNode(props.options['>21']);
           } else {
