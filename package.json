@@ -2,7 +2,7 @@
   "name": "legaladviser",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/jonas31415/LegalAdviser",
+  "homepage": "https://jonas31415.github.io/LegalAdvisor",
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",

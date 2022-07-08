@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="LegalAdvisor">
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/admin" element={<Admin />} />
