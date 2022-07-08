@@ -12,7 +12,11 @@ interface ButtonOptionProps {
 
 export const ButtonOption: React.FC<ButtonOptionProps> = (props) => {
   return (
-    <Button onClick={() => props.onClick()} variant="outlined">
+    <Button
+      onClick={() => props.onClick()}
+      variant="outlined"
+      sx={{ width: '80%' }}
+    >
       {props.text}
     </Button>
   );
