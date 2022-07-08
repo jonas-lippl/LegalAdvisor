@@ -1,7 +1,9 @@
-.header{
-    display: flex;
+h1{
+    color: #1976d2;
+    position: center;
 }
 
-.adminModeButton{
-    float: right;
+body{
+    padding: 20px;
+    background-color: #F9F9F9
 }

@@ -4,11 +4,9 @@ import { Node } from './logic/Node';
 import EditIcon from '@mui/icons-material/Edit';
 import CloseIcon from '@mui/icons-material/Close';
 import { ButtonOption, DateOption } from './Option';
-import { Fab } from '@mui/material';
+import { Fab, Stack } from '@mui/material';
 
 const App = () => {
-  const [adminMode, setAdminMode] = useState<boolean>(false);
-
   // Test Data----------------------------------------------
 
   const nextNodeA = new Node('Question A', {
@@ -33,44 +31,27 @@ const App = () => {
       />
     );
   } else {
-    options = Object.keys(currentNode.options).map((key) => (
-      <ButtonOption
-        onClick={() => setCurrentNode(currentNode.options[key])}
-        text={key}
-      />
-    ));
-  }
-
-  if (adminMode) {
-    return (
-      <>
-        <h1>LegalAdvisor</h1>
-        <div className="header">
-          <h2>Admin Mode</h2>
-          <Fab
-            color="primary"
-            size={'small'}
-            onClick={() => setAdminMode(false)}
-          >
-            <CloseIcon />
-          </Fab>
-        </div>
-      </>
+    options = (
+      <Stack direction="row" spacing={2}>
+        {Object.keys(currentNode.options).map((key) => (
+          <ButtonOption
+            onClick={() => setCurrentNode(currentNode.options[key])}
+            text={key}
+          />
+        ))}
+      </Stack>
     );
   }
+
   return (
-    <>
+    <div className={'body'}>
       <h1>LegalAdvisor</h1>
-      <div className="header">
-        <h2>{currentNode.question}</h2>
-        <div className={'adminModeButton'}>
-          <Fab color="primary" size="small" onClick={() => setAdminMode(true)}>
-            <EditIcon />
-          </Fab>
-        </div>
+      <h2>Question</h2>
+      <div className="content">
+        <p>{currentNode.question}</p>
       </div>
       {options}
-    </>
+    </div>
   );
 };
 
