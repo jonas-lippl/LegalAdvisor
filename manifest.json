@@ -3,8 +3,26 @@
   "name": "Legal Advisor",
   "icons": [
     {
-      "src": "scale.png",
-      "sizes": "512x512 192x192 64x64 32x32 24x24 16x16",
+      "src": "scale-512.png",
+      "sizes": "512x512",
+      "purpose": "any",
+      "type": "image/png"
+    },
+    {
+      "src": "scale-192.png",
+      "sizes": "192x192",
+      "purpose": "any",
+      "type": "image/png"
+    },
+    {
+      "src": "scale-64.png",
+      "sizes": "64x64",
+      "purpose": "any",
+      "type": "image/png"
+    },
+    {
+      "src": "scale-32.png",
+      "sizes": "32x32",
       "purpose": "any",
       "type": "image/png"
     }
