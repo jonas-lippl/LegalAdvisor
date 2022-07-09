@@ -29,11 +29,16 @@ const App = () => {
     );
   } else if (currentNode.question.includes('Arbeitsort')) {
     options = (
-      <input
-        type="text"
-        name="Arbeitsort"
-        onSubmit={() => setCurrentNode(currentNode.options['Next'])}
-      />
+      <>
+        <input
+          type="text"
+          name="Arbeitsort"
+          onSubmit={() => setCurrentNode(currentNode.options['Next'])}
+        />
+        <button onClick={() => setCurrentNode(currentNode.options['Weiter'])}>
+          Weiter
+        </button>
+      </>
     );
   } else if (optionKeys.length) {
     options = optionKeys.map((key) => (
