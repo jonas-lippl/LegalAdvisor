@@ -41,6 +41,8 @@ const App = () => {
       </>
     );
   } else if (optionKeys.length) {
+    // ensure that "Ja" is on the right
+    optionKeys.sort((key) => (key === 'Ja' ? 1 : -1));
     options = optionKeys.map((key) => (
       <button onClick={() => setCurrentNode(currentNode.options[key])}>
         {key}
