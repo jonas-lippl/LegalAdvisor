@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/LegalAdvisor/static/css/main.deb92ab7.css",
-    "main.js": "/LegalAdvisor/static/js/main.c10b7984.js",
+    "main.css": "/LegalAdvisor/static/css/main.6060ff22.css",
+    "main.js": "/LegalAdvisor/static/js/main.c74b5e41.js",
     "static/media/uk_flag.jpg": "/LegalAdvisor/static/media/uk_flag.caac25ac583c588a6cce.jpg",
     "static/media/scale-transparent.png": "/LegalAdvisor/static/media/scale-transparent.f3038eb409ed840b2bb3.png",
     "index.html": "/LegalAdvisor/index.html",
-    "main.deb92ab7.css.map": "/LegalAdvisor/static/css/main.deb92ab7.css.map",
-    "main.c10b7984.js.map": "/LegalAdvisor/static/js/main.c10b7984.js.map"
+    "main.6060ff22.css.map": "/LegalAdvisor/static/css/main.6060ff22.css.map",
+    "main.c74b5e41.js.map": "/LegalAdvisor/static/js/main.c74b5e41.js.map"
   },
   "entrypoints": [
-    "static/css/main.deb92ab7.css",
-    "static/js/main.c10b7984.js"
+    "static/css/main.6060ff22.css",
+    "static/js/main.c74b5e41.js"
   ]
 }
