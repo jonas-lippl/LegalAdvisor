@@ -44,7 +44,10 @@ const App = () => {
         currentNode={currentNode}
       />
     );
-  } else if (currentNode.question.includes('Arbeitsort')) {
+  } else if (
+    currentNode.question.includes('Arbeitsort') ||
+    currentNode.question.includes('place of work')
+  ) {
     options = (
       <>
         <input
