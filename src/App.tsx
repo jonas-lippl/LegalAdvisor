@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { downloadStructure } from './api/structure';
 
 import { data } from './data';
 import styles from './App.module.css';
-import { Node } from './logic/Node';
 import { DateOption } from './Option';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
