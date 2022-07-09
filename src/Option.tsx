@@ -23,8 +23,9 @@ export const ButtonOption: React.FC<ButtonOptionProps> = (props) => {
 };
 
 interface DateOptionProps {
+  setPreviousNode: (n: Node) => void;
   setCurrentNode: (n: Node) => void;
-  options: IOptions;
+  currentNode: Node;
 }
 
 export const DateOption: React.FC<DateOptionProps> = (props) => {
@@ -41,9 +42,11 @@ export const DateOption: React.FC<DateOptionProps> = (props) => {
           const diffDays = Math.ceil(diff / (1000 * 3600 * 24));
 
           if (diffDays > 21) {
-            props.setCurrentNode(props.options['>21']);
+            props.setPreviousNode(props.currentNode);
+            props.setCurrentNode(props.currentNode.options['>21']);
           } else {
-            props.setCurrentNode(props.options['<21']);
+            props.setPreviousNode(props.currentNode);
+            props.setCurrentNode(props.currentNode.options['<21']);
           }
         }}
         renderInput={(params) => <TextField {...params} />}

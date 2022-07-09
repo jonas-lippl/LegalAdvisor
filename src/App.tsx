@@ -5,9 +5,11 @@ import { data } from './data';
 import styles from './App.module.css';
 import { Node } from './logic/Node';
 import { DateOption } from './Option';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const App = () => {
   const [currentNode, setCurrentNode] = useState(data);
+  const [previousNode, setPreviousNode] = useState(data);
 
   // useEffect(() => {
   //   fetchStructure();
@@ -23,43 +25,69 @@ const App = () => {
   if (optionKeys.some((text) => text.includes('>') || text.includes('<'))) {
     options = (
       <DateOption
+        setPreviousNode={setPreviousNode}
         setCurrentNode={setCurrentNode}
-        options={currentNode.options}
+        currentNode={currentNode}
       />
     );
   } else if (currentNode.question.includes('Arbeitsort')) {
     options = (
       <>
         <input
+          autoFocus
+          placeholder="Arbeitsort"
           type="text"
           name="Arbeitsort"
-          onSubmit={() => setCurrentNode(currentNode.options['Next'])}
+          onSubmit={() => {
+            setPreviousNode(currentNode);
+            setCurrentNode(currentNode.options['Next']);
+          }}
         />
-        <button onClick={() => setCurrentNode(currentNode.options['Weiter'])}>
+        <button
+          onClick={() => {
+            setPreviousNode(currentNode);
+            setCurrentNode(currentNode.options['Weiter']);
+          }}
+        >
           Weiter
         </button>
       </>
     );
   } else if (optionKeys.length) {
     options = optionKeys.map((key) => (
-      <button onClick={() => setCurrentNode(currentNode.options[key])}>
+      <button
+        onClick={() => {
+          setPreviousNode(currentNode);
+          setCurrentNode(currentNode.options[key]);
+        }}
+      >
         {key}
       </button>
     ));
   }
 
   return (
-    <div>
-      <div className={styles.header}>
-        <h1 onClick={() => setCurrentNode(data)}>LegalAdvisor</h1>
-        <div className={styles.logo} />
-      </div>
+    <>
+      <div>
+        <div className={styles.header}>
+          <h1 onClick={() => setCurrentNode(data)}>LegalAdvisor</h1>
+          <div className={styles.logo} />
+        </div>
 
-      <div className={styles.content}>
-        <p className={styles.question}>{currentNode.question}</p>
-        {options ? <div className={styles.options}>{options}</div> : null}
+        <div className={styles.content}>
+          <p className={styles.question}>{currentNode.question}</p>
+          {options ? <div className={styles.options}>{options}</div> : null}
+        </div>
       </div>
-    </div>
+      <button
+        className={styles.backButton}
+        onClick={() => {
+          setCurrentNode(previousNode);
+        }}
+      >
+        <ArrowBackIcon />
+      </button>
+    </>
   );
 };
 
