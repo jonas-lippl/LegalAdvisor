@@ -7,6 +7,8 @@
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+  outline: none;
+  border: none;
 }
 
 .germanFlag {

@@ -98,14 +98,17 @@ const App = () => {
           {options ? <div className={styles.options}>{options}</div> : null}
         </div>
       </div>
-      <button
-        className={styles.backButton}
-        onClick={() => {
-          setCurrentNode(previousNode);
-        }}
-      >
-        <ArrowBackIcon />
-      </button>
+      {currentNode !== defaultData ? (
+        <button
+          className={styles.backButton}
+          onClick={() => {
+            setCurrentNode(previousNode);
+          }}
+        >
+          <ArrowBackIcon />
+        </button>
+      ) : null}
+
       <LanguageButton
         changeLanguage={() => changeLanguage()}
         currentLanguage={language}
