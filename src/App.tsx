@@ -4,7 +4,7 @@ import { downloadStructure } from './api/structure';
 import { data as dataEN } from './data_en';
 import { data as dataDE } from './data_de';
 import styles from './App.module.css';
-import { DateOption } from './Option';
+import { DateOption } from './components/Option';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { LanguageButton } from './components/LanguageButton';
 
@@ -44,7 +44,10 @@ const App = () => {
         currentNode={currentNode}
       />
     );
-  } else if (currentNode.question.includes('Arbeitsort')) {
+  } else if (
+    currentNode.question.includes('Arbeitsort') ||
+    currentNode.question.includes('place of work')
+  ) {
     options = (
       <>
         <input
