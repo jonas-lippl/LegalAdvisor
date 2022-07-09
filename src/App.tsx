@@ -48,22 +48,34 @@ const App = () => {
     currentNode.question.includes('Arbeitsort') ||
     currentNode.question.includes('place of work')
   ) {
+    let label: string = '';
+    currentNode.question.includes('Arbeitsort')
+      ? (label = 'Arbeitsort')
+      : (label = 'place of work');
     options = (
       <>
         <input
           autoFocus
-          placeholder="Arbeitsort"
+          placeholder={label}
           type="text"
           name="Arbeitsort"
           onSubmit={() => {
             setPreviousNode(currentNode);
-            setCurrentNode(currentNode.options['Next']);
+            setCurrentNode(
+              currentNode.options['Next']
+                ? currentNode.options['Next']
+                : currentNode.options['Weiter'],
+            );
           }}
         />
         <button
           onClick={() => {
             setPreviousNode(currentNode);
-            setCurrentNode(currentNode.options['Weiter']);
+            setCurrentNode(
+              currentNode.options['Next']
+                ? currentNode.options['Next']
+                : currentNode.options['Weiter'],
+            );
           }}
         >
           Weiter

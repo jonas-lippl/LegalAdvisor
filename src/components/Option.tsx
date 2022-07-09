@@ -30,6 +30,7 @@ interface DateOptionProps {
 
 export const DateOption: React.FC<DateOptionProps> = (props) => {
   const [date, setDate] = useState<Date>(new Date());
+
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DatePicker
