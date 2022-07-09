@@ -4,7 +4,7 @@ import { downloadStructure } from './api/structure';
 import { data as dataEN } from './data_en';
 import { data as dataDE } from './data_de';
 import styles from './App.module.css';
-import { DateOption } from './Option';
+import { DateOption } from './components/Option';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { LanguageButton } from './components/LanguageButton';
 
@@ -95,14 +95,17 @@ const App = () => {
           {options ? <div className={styles.options}>{options}</div> : null}
         </div>
       </div>
-      <button
-        className={styles.backButton}
-        onClick={() => {
-          setCurrentNode(previousNode);
-        }}
-      >
-        <ArrowBackIcon />
-      </button>
+      {currentNode !== defaultData ? (
+        <button
+          className={styles.backButton}
+          onClick={() => {
+            setCurrentNode(previousNode);
+          }}
+        >
+          <ArrowBackIcon />
+        </button>
+      ) : null}
+
       <LanguageButton
         changeLanguage={() => changeLanguage()}
         currentLanguage={language}
