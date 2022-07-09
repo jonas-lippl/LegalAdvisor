@@ -1,0 +1,18 @@
+.languageButton {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 50px;
+  height: 30px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.germanFlag {
+  background-image: url('../../public/germany_flag.png');
+}
+
+.ukFlag {
+  background-image: url('../../public/uk_flag.jpg');
+}

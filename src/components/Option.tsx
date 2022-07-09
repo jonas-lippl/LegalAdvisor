@@ -3,7 +3,7 @@ import { Button, TextField } from '@mui/material';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { IOptions, Node } from './logic/Node';
+import { IOptions, Node } from '../logic/Node';
 
 interface ButtonOptionProps {
   text: string;

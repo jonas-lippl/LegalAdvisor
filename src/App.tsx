@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { downloadStructure } from './api/structure';
 
-import { data } from './data';
+import { data as dataEN } from './data_en';
+import { data as dataDE } from './data_de';
 import styles from './App.module.css';
 import { Node } from './logic/Node';
-import { DateOption } from './Option';
+import { DateOption } from './components/Option';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { LanguageButton } from './components/LanguageButton';
 
 const App = () => {
-  const [currentNode, setCurrentNode] = useState(data);
-  const [previousNode, setPreviousNode] = useState(data);
+  const defaultData = dataDE;
+
+  const [currentNode, setCurrentNode] = useState(defaultData);
+  const [previousNode, setPreviousNode] = useState(defaultData);
+  const [language, setLanguage] = useState<'EN' | 'DE'>('DE');
 
   // useEffect(() => {
   //   fetchStructure();
@@ -17,6 +22,16 @@ const App = () => {
 
   const fetchStructure = () => {
     downloadStructure().then((structure) => setCurrentNode(structure));
+  };
+
+  const changeLanguage = () => {
+    if (language === 'DE') {
+      setCurrentNode(dataEN);
+      setLanguage('EN');
+    } else {
+      setCurrentNode(dataDE);
+      setLanguage('DE');
+    }
   };
 
   const optionKeys = Object.keys(currentNode.options);
@@ -72,7 +87,7 @@ const App = () => {
     <>
       <div>
         <div className={styles.header}>
-          <h1 onClick={() => setCurrentNode(data)}>LegalAdvisor</h1>
+          <h1 onClick={() => setCurrentNode(defaultData)}>LegalAdvisor</h1>
           <div className={styles.logo} />
         </div>
 
@@ -89,6 +104,10 @@ const App = () => {
       >
         <ArrowBackIcon />
       </button>
+      <LanguageButton
+        changeLanguage={() => changeLanguage()}
+        currentLanguage={language}
+      />
     </>
   );
 };
